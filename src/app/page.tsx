@@ -1,3 +1,3 @@
 export default function Home() {
-  return <main>Home</main>
+  return <main className="relative flex h-full">Home</main>
 }
