@@ -11,8 +11,11 @@
   "dependencies": {
     "@auth/prisma-adapter": "^1.4.0",
     "@prisma/client": "^5.10.2",
+    "@radix-ui/react-slot": "^1.0.2",
     "@rocketseat/eslint-config": "^2.2.2",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "lucide-react": "^0.338.0",
     "next": "14.1.0",
     "next-auth": "^4.24.6",
     "react": "^18",
