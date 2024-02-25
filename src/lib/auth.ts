@@ -15,13 +15,13 @@ export const authOptions = {
     }),
   ],
   debug: process.env.NODE_ENV !== 'production',
-  callbacks: {
-    async session({ session, user }) {
-      session.user = {
-        ...session.user,
-        id: user.id,
-      }
-      return session
-    },
-  },
+  // callbacks: {
+  //   async session({ session, user }) {
+  //     session.user = {
+  //       ...session.user,
+  //       id: user.id,
+  //     }
+  //     return session
+  //   },
+  // },
 } as AuthOptions
