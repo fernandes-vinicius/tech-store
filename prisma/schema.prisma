@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -22,15 +16,15 @@ model Category {
 }
 
 model Product {
-  id              String   @id @default(cuid())
-  name            String
-  slug            String
-  description     String
-  basePrice       Decimal  @db.Decimal(8, 2)
-  imageUrls       String[]
-  discountPercent Int      @default(0)
-  category        Category @relation(fields: [categoryId], references: [id])
-  categoryId      String
+  id                 String   @id @default(cuid())
+  name               String
+  slug               String
+  description        String
+  basePrice          Decimal  @db.Decimal(8, 2)
+  imageUrls          String[]
+  discountPercentage Int      @default(0)
+  categoryId         String
+  category           Category @relation(fields: [categoryId], references: [id])
 }
 
 model Account {
@@ -39,15 +33,14 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
