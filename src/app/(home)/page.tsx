@@ -30,7 +30,20 @@ export default async function Home() {
         <Categories />
       </div>
 
-      <ProductList products={deals} />
+      <div className="flex flex-col gap-5">
+        <p className="px-5 font-bold uppercase">Ofertas</p>
+        <ProductList products={deals} />
+      </div>
+
+      <Image
+        src="/banner-mouses.png"
+        alt="Até 55% de desconto em Mouses"
+        width={0}
+        height={0}
+        className="h-auto w-full px-5"
+        sizes="100vw"
+        // fill
+      />
     </main>
   )
 }
