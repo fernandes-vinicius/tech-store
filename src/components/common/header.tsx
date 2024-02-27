@@ -18,6 +18,7 @@ import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTrigger,
@@ -74,7 +75,7 @@ export function Header() {
             {status === 'unauthenticated' && (
               <Button
                 variant="outline"
-                className="w-full justify-start gap-2"
+                className="justify-start gap-2"
                 onClick={handleLogin}
               >
                 <LogInIcon className="size-4" />
@@ -85,7 +86,7 @@ export function Header() {
             {status === 'authenticated' && (
               <Button
                 variant="outline"
-                className="w-full justify-start gap-2"
+                className="justify-start gap-2"
                 onClick={handleLogout}
               >
                 <LogInIcon className="size-4" />
@@ -93,20 +94,24 @@ export function Header() {
               </Button>
             )}
 
-            <Button variant="outline" className="w-full justify-start gap-2">
+            <Button variant="outline" className="justify-start gap-2">
               <HomeIcon className="size-4" />
               Início
             </Button>
 
-            <Button variant="outline" className="w-full justify-start gap-2">
+            <Button variant="outline" className="justify-start gap-2">
               <PercentIcon className="size-4" />
               Ofertas
             </Button>
 
-            <Button variant="outline" className="w-full justify-start gap-2">
-              <ListOrderedIcon className="size-4" />
-              Catálogo
-            </Button>
+            <SheetClose asChild>
+              <Button asChild variant="outline" className="justify-start gap-2">
+                <Link href="/catalog">
+                  <ListOrderedIcon className="size-4" />
+                  Catálogo
+                </Link>
+              </Button>
+            </SheetClose>
           </div>
         </SheetContent>
       </Sheet>
