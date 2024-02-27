@@ -1,3 +1,4 @@
+import { CATEGORY_SLUGS } from '@/lib/constants'
 import type { LucideProps } from 'lucide-react'
 import {
   KeyboardIcon,
@@ -14,22 +15,22 @@ interface CategoryIconProps extends LucideProps {
 
 export function CategoryIcon({ slug, size = 16, ...props }: CategoryIconProps) {
   switch (slug) {
-    case 'keyboards':
+    case CATEGORY_SLUGS.KEYBOARDS:
       return <KeyboardIcon size={size} {...props} />
 
-    case 'mouses':
+    case CATEGORY_SLUGS.MOUSES:
       return <MouseIcon size={size} {...props} />
 
-    case 'headphones':
+    case CATEGORY_SLUGS.HEADPHONES:
       return <HeadphonesIcon size={size} {...props} />
 
-    case 'mousepads':
+    case CATEGORY_SLUGS.MOUSEPADS:
       return <SquareIcon size={size} {...props} />
 
-    case 'monitors':
+    case CATEGORY_SLUGS.MONITORS:
       return <MonitorIcon size={size} {...props} />
 
-    case 'speakers':
+    case CATEGORY_SLUGS.SPEAKERS:
       return <SpeakerIcon size={size} {...props} />
 
     default:
