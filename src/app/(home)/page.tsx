@@ -1,9 +1,9 @@
+import { ProductList } from '@/components/common/product-list'
+import { SectionTitle } from '@/components/common/section-title'
 import { CATEGORY_SLUGS } from '@/lib/constants'
 import { db } from '@/lib/prisma'
 
 import { Categories } from './_components/categories'
-import { ProductList } from './_components/product-list'
-import { SectionTitle } from './_components/section-title'
 import { PromoBanner } from './_components/promo-banner'
 
 export default async function Home() {

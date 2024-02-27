@@ -30,7 +30,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
   }
 
   return (
-    <div className="flex flex-col pb-8">
+    <div className="flex flex-col">
       <h2 className="text-lg">{product.name}</h2>
 
       <div className="flex items-center gap-2">

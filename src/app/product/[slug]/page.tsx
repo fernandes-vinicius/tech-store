@@ -1,8 +1,10 @@
-import { db } from '@/lib/prisma'
+import { ProductList } from '@/components/common/product-list'
 import { computeProductTotalPrice } from '@/lib/utils'
+import { db } from '@/lib/prisma'
 
 import { ProductGallery } from './_components/product-gallery'
 import { ProductDetails } from './_components/product-details'
+import { SectionTitle } from '@/components/common/section-title'
 
 interface ProductPageProps {
   params: {
@@ -15,6 +17,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
     where: {
       slug: params.slug,
     },
+    include: {
+      category: {
+        include: {
+          products: {
+            where: {
+              slug: {
+                not: params.slug,
+              },
+            },
+          },
+        },
+      },
+    },
   })
 
   if (!product) {
@@ -22,11 +37,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
 
   return (
-    <main className="flex flex-col gap-8">
+    <main className="flex flex-col pb-8">
       <ProductGallery name={product.name} imageUrls={product.imageUrls} />
 
-      <div className="px-5">
+      <div className="mt-8 px-5">
         <ProductDetails product={computeProductTotalPrice(product)} />
+      </div>
+
+      <div className="mt-16 flex flex-col gap-5">
+        <SectionTitle>Produtos recomendados</SectionTitle>
+        <ProductList products={product.category.products} />
       </div>
     </main>
   )
