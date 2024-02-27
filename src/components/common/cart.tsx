@@ -17,10 +17,16 @@ export function Cart() {
         className="w-fit gap-1 border-primary px-3 py-1.5 text-base font-bold uppercase"
       >
         <ShoppingCartIcon className="size-4 fill-foreground" />
-        Catálogo
+        Carrinho
       </Badge>
 
       <div className="flex flex-col gap-5">
+        {products.length === 0 && (
+          <p className="text-center font-semibold">
+            Carrinho vazio. Vamos fazer compras?
+          </p>
+        )}
+
         {products.map((product) => (
           <CartItem
             key={product.id}
