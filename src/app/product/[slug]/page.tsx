@@ -1,5 +1,7 @@
 import { db } from '@/lib/prisma'
 
+import { ProductGallery } from './_components/product-gallery'
+
 interface ProductPageProps {
   params: {
     slug: string
@@ -17,5 +19,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
     return null
   }
 
-  return <main>ProductPage: {product.name}</main>
+  return (
+    <main>
+      <ProductGallery name={product.name} imageUrls={product.imageUrls} />
+    </main>
+  )
 }
