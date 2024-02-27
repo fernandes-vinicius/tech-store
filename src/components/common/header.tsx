@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
 import {
@@ -41,6 +42,7 @@ export function Header() {
             <MenuIcon className="size-4" />
           </Button>
         </SheetTrigger>
+
         <SheetContent side="left">
           <SheetHeader className="text-left text-lg font-semibold">
             Menu
@@ -109,9 +111,11 @@ export function Header() {
         </SheetContent>
       </Sheet>
 
-      <h1 className="text-lg font-semibold">
-        <span className="uppercase text-primary">Tech</span> Store
-      </h1>
+      <Link href="/">
+        <h1 className="text-lg font-semibold">
+          <span className="uppercase text-primary">Tech</span> Store
+        </h1>
+      </Link>
 
       <Button aria-label="Open shopping cart" size="icon" variant="outline">
         <ShoppingCartIcon className="size-4" />
