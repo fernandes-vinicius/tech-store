@@ -1,6 +1,8 @@
 import { db } from '@/lib/prisma'
+import { computeProductTotalPrice } from '@/lib/utils'
 
 import { ProductGallery } from './_components/product-gallery'
+import { ProductDetails } from './_components/product-details'
 
 interface ProductPageProps {
   params: {
@@ -20,8 +22,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
 
   return (
-    <main>
+    <main className="flex flex-col gap-8">
       <ProductGallery name={product.name} imageUrls={product.imageUrls} />
+
+      <div className="px-5">
+        <ProductDetails product={computeProductTotalPrice(product)} />
+      </div>
     </main>
   )
 }
