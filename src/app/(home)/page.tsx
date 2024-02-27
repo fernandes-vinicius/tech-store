@@ -32,7 +32,7 @@ export default async function Home() {
   })
 
   return (
-    <main className="flex flex-col gap-8">
+    <main className="flex flex-col gap-8 pb-8">
       <PromoBanner
         src="/banner-55-off.png"
         alt="Até 55% de desconto só esse mês"
