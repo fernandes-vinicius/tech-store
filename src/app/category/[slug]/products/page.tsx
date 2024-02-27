@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { Badge } from '@/components/ui/badge'
 import { CategoryIcon } from '@/components/common/category-icon'
 import { ProductItem } from '@/components/common/product-item'
@@ -36,10 +38,9 @@ export default async function ProductsPage({ params }: ProductsPageProps) {
 
       <div className="grid grid-cols-2 gap-8">
         {category.products.map((product) => (
-          <ProductItem
-            key={product.id}
-            product={computeProductTotalPrice(product)}
-          />
+          <Link key={product.id} href={`/product/${product.slug}`}>
+            <ProductItem product={computeProductTotalPrice(product)} />
+          </Link>
         ))}
       </div>
     </main>
