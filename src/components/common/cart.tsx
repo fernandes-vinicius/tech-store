@@ -2,14 +2,16 @@
 
 import { ShoppingCartIcon } from 'lucide-react'
 
+import { CartItem } from '@/components/common/cart-item'
 import { Badge } from '@/components/ui/badge'
 import { useCart } from '@/providers/cart-provider'
+import { computeProductTotalPrice } from '@/lib/utils'
 
 export function Cart() {
   const { products } = useCart()
 
   return (
-    <div className="">
+    <div className="flex flex-col gap-8">
       <Badge
         variant="outline"
         className="w-fit gap-1 border-primary px-3 py-1.5 text-base font-bold uppercase"
@@ -18,9 +20,14 @@ export function Cart() {
         Catálogo
       </Badge>
 
-      {products.map((product) => (
-        <h1 key={product.id}>{product.name}</h1>
-      ))}
+      <div className="flex flex-col gap-5">
+        {products.map((product) => (
+          <CartItem
+            key={product.id}
+            product={computeProductTotalPrice(product) as never}
+          />
+        ))}
+      </div>
     </div>
   )
 }

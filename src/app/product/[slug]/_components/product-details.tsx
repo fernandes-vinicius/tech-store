@@ -59,6 +59,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           aria-label="Decrease quantity"
           variant="outline"
           size="icon"
+          className="size-8"
           onClick={handleDecreaseQuantity}
         >
           <ChevronLeftIcon className="size-4" />
@@ -69,6 +70,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           aria-label="Increase quantity"
           variant="outline"
           size="icon"
+          className="size-8"
           onClick={handleIncreaseQuantity}
         >
           <ChevronRightIcon className="size-4" />
