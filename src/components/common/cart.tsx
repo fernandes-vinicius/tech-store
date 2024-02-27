@@ -1,7 +1,9 @@
 'use client'
 
+import { loadStripe } from '@stripe/stripe-js'
 import { ShoppingCartIcon } from 'lucide-react'
 
+import { createCheckout } from '@/actions/checkout'
 import { CartItem } from '@/components/common/cart-item'
 import { CartSummary } from '@/components/common/cart-summary'
 import { Badge } from '@/components/ui/badge'
@@ -9,9 +11,22 @@ import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { useCart } from '@/providers/cart-provider'
 import { computeProductTotalPrice } from '@/lib/utils'
+import { env } from '@/lib/env'
 
 export function Cart() {
   const { products } = useCart()
+
+  async function handleCheckout() {
+    try {
+      const checkout = await createCheckout(products)
+
+      const stripe = await loadStripe(env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+
+      stripe?.redirectToCheckout({ sessionId: checkout.id })
+    } catch (error) {
+      console.log('CHECKOUT ERROR', error)
+    }
+  }
 
   return (
     <div className="flex h-full flex-col gap-8">
@@ -44,7 +59,11 @@ export function Cart() {
 
       <CartSummary />
 
-      <Button type="button" className="font-bold uppercase">
+      <Button
+        type="button"
+        className="font-bold uppercase"
+        onClick={handleCheckout}
+      >
         Finalizar compra
       </Button>
     </div>

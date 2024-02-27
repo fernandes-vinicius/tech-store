@@ -47,7 +47,7 @@ export function CartProvider({ children }: Readonly<React.PropsWithChildren>) {
     }, 0)
   }, [products])
 
-  const totalDiscount = total - subtotal
+  const totalDiscount = subtotal > total ? subtotal - total : total - subtotal
 
   function addProductToCart(product: CartProduct) {
     const productAlreadyInCart = products.some(
