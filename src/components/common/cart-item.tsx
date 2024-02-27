@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { ChevronLeftIcon, ChevronRightIcon, TrashIcon } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-import { type CartProduct } from '@/providers/cart-provider'
+import { useCart, type CartProduct } from '@/providers/cart-provider'
 import { formatCurrency } from '@/lib/utils'
 
 interface CartProductProps {
@@ -12,6 +12,12 @@ interface CartProductProps {
 }
 
 export function CartItem({ product }: CartProductProps) {
+  const { decreaseProductQuantity } = useCart()
+
+  function handleDecreaseProductQuantity() {
+    decreaseProductQuantity(product.id)
+  }
+
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-2">
@@ -48,7 +54,7 @@ export function CartItem({ product }: CartProductProps) {
               variant="outline"
               size="icon"
               className="size-8"
-              // onClick={handleDecreaseQuantity}
+              onClick={handleDecreaseProductQuantity}
             >
               <ChevronLeftIcon className="size-4" />
             </Button>
@@ -67,15 +73,17 @@ export function CartItem({ product }: CartProductProps) {
         </div>
       </div>
 
-      <Button
-        type="button"
-        aria-label="Remove"
-        size="icon"
-        variant="outline"
-        className="size-8"
-      >
-        <TrashIcon className="size-4" />
-      </Button>
+      <div>
+        <Button
+          type="button"
+          aria-label="Remove product from cart"
+          size="icon"
+          variant="outline"
+          className="size-8"
+        >
+          <TrashIcon className="size-4" />
+        </Button>
+      </div>
     </div>
   )
 }
