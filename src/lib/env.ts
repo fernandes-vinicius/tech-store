@@ -11,6 +11,9 @@ export const env = createEnv({
 
     GOOGLE_CLIENT_ID: z.string().min(1),
     GOOGLE_CLIENT_SECRET: z.string().min(1),
+
+    STRIPE_PUBLISHABLE_KEY: z.string().min(1),
+    STRIPE_SECRET_KEY: z.string().min(1),
   },
   /*
    * Environment variables available on the client (and server).
@@ -31,5 +34,8 @@ export const env = createEnv({
 
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+
+    STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
+    STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
   },
 })
