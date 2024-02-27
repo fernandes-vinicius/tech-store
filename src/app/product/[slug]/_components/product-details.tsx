@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowDownIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 
-import { Badge } from '@/components/ui/badge'
-import { formatCurrency, type ProductWithTotal } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
+import { DiscountBadge } from '@/components/common/discount-badge'
+import { formatCurrency, type ProductWithTotal } from '@/lib/utils'
 
 import { DeliveryType } from './delivery-type'
 
@@ -39,10 +39,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         </h1>
 
         {product.discountPercentage > 0 && (
-          <Badge className="px-2 py-[2px]">
-            <ArrowDownIcon className="size-3" strokeWidth={3} />
-            {`${product.discountPercentage} %`}
-          </Badge>
+          <DiscountBadge>{product.discountPercentage}</DiscountBadge>
         )}
       </div>
 
