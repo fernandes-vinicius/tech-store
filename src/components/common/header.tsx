@@ -118,7 +118,7 @@ export function Header() {
 
       <Link href="/">
         <h1 className="text-lg font-semibold">
-          <span className="uppercase text-primary">Tech</span> Store
+          <span className="font-bold uppercase text-primary">Tech</span> Store
         </h1>
       </Link>
 
