@@ -3,6 +3,7 @@
 import { ShoppingCartIcon } from 'lucide-react'
 
 import { CartItem } from '@/components/common/cart-item'
+import { CartSummary } from '@/components/common/cart-summary'
 import { Badge } from '@/components/ui/badge'
 import { useCart } from '@/providers/cart-provider'
 import { computeProductTotalPrice } from '@/lib/utils'
@@ -33,6 +34,8 @@ export function Cart() {
             product={computeProductTotalPrice(product) as never}
           />
         ))}
+
+        <CartSummary />
       </div>
     </div>
   )

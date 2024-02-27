@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import { createContext, useContext, useMemo, useState } from 'react'
 
 import { type ProductWithTotal } from '@/lib/utils'
 
@@ -10,20 +10,20 @@ export interface CartProduct extends ProductWithTotal {
 
 interface ICartContext {
   products: CartProduct[]
-  cardBasePrice: number
-  cartTotalPrice: number
-  cartTotalDiscount: number
+  total: number
+  subtotal: number
+  totalDiscount: number
   addProductToCart(product: CartProduct): void
   decreaseProductQuantity(productId: string): void
   increaseProductQuantity(productId: string): void
   removeProductFromCart(productId: string): void
 }
 
-const CartContext = React.createContext<ICartContext>({
+const CartContext = createContext<ICartContext>({
   products: [],
-  cardBasePrice: 0,
-  cartTotalPrice: 0,
-  cartTotalDiscount: 0,
+  total: 0,
+  subtotal: 0,
+  totalDiscount: 0,
   addProductToCart() {},
   decreaseProductQuantity() {},
   increaseProductQuantity() {},
@@ -32,6 +32,22 @@ const CartContext = React.createContext<ICartContext>({
 
 export function CartProvider({ children }: Readonly<React.PropsWithChildren>) {
   const [products, setProducts] = useState<CartProduct[]>([])
+
+  // Total without discount
+  const subtotal = useMemo(() => {
+    return products.reduce((acc, product) => {
+      return acc + Number(product.basePrice)
+    }, 0)
+  }, [products])
+
+  // Total with discount
+  const total = useMemo(() => {
+    return products.reduce((acc, product) => {
+      return acc + product.totalPrice
+    }, 0)
+  }, [products])
+
+  const totalDiscount = subtotal - total
 
   function addProductToCart(product: CartProduct) {
     const productAlreadyInCart = products.some(
@@ -94,9 +110,9 @@ export function CartProvider({ children }: Readonly<React.PropsWithChildren>) {
     <CartContext.Provider
       value={{
         products,
-        cardBasePrice: 0,
-        cartTotalPrice: 0,
-        cartTotalDiscount: 0,
+        total,
+        subtotal,
+        totalDiscount,
         addProductToCart,
         decreaseProductQuantity,
         increaseProductQuantity,
@@ -109,7 +125,7 @@ export function CartProvider({ children }: Readonly<React.PropsWithChildren>) {
 }
 
 export function useCart() {
-  const cartContext = React.useContext(CartContext)
+  const cartContext = useContext(CartContext)
 
   if (!cartContext) {
     throw new Error('`useCart` must be used within a CartProvider')
