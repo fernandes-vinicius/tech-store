@@ -12,7 +12,11 @@ interface CartProductProps {
 }
 
 export function CartItem({ product }: CartProductProps) {
-  const { decreaseProductQuantity, increaseProductQuantity } = useCart()
+  const {
+    decreaseProductQuantity,
+    increaseProductQuantity,
+    removeProductFromCart,
+  } = useCart()
 
   function handleDecreaseProductQuantity() {
     decreaseProductQuantity(product.id)
@@ -20,6 +24,10 @@ export function CartItem({ product }: CartProductProps) {
 
   function handleIncreaseProductQuantity() {
     increaseProductQuantity(product.id)
+  }
+
+  function handleRemoveProductFromCart() {
+    removeProductFromCart(product.id)
   }
 
   return (
@@ -84,6 +92,7 @@ export function CartItem({ product }: CartProductProps) {
           size="icon"
           variant="outline"
           className="size-8"
+          onClick={handleRemoveProductFromCart}
         >
           <TrashIcon className="size-4" />
         </Button>
