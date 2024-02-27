@@ -5,18 +5,18 @@ import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { DiscountBadge } from '@/components/common/discount-badge'
-import { formatCurrency, type ProductWithTotal } from '@/lib/utils'
+import { type ProductWithTotal, formatCurrency } from '@/lib/utils'
+import { useCart } from '@/providers/cart-provider'
 
 import { DeliveryType } from './delivery-type'
 
 interface ProductDetailsProps {
-  product: Pick<
-    ProductWithTotal,
-    'name' | 'basePrice' | 'description' | 'discountPercentage' | 'totalPrice'
-  >
+  product: ProductWithTotal
 }
 
 export function ProductDetails({ product }: ProductDetailsProps) {
+  const { addProductToCart } = useCart()
+
   const [quantity, setQuantity] = useState(1)
 
   function handleDecreaseQuantity() {
@@ -27,6 +27,10 @@ export function ProductDetails({ product }: ProductDetailsProps) {
 
   function handleIncreaseQuantity() {
     setQuantity((prev) => prev + 1)
+  }
+
+  function handleAddProductToCart() {
+    addProductToCart({ ...product, quantity })
   }
 
   return (
@@ -50,11 +54,23 @@ export function ProductDetails({ product }: ProductDetailsProps) {
       )}
 
       <div className="mt-4 flex items-center gap-2">
-        <Button variant="outline" size="icon" onClick={handleDecreaseQuantity}>
+        <Button
+          type="button"
+          aria-label="Decrease quantity"
+          variant="outline"
+          size="icon"
+          onClick={handleDecreaseQuantity}
+        >
           <ChevronLeftIcon className="size-4" />
         </Button>
         <span className="text-sm leading-none">{quantity}</span>
-        <Button variant="outline" size="icon" onClick={handleIncreaseQuantity}>
+        <Button
+          type="button"
+          aria-label="Increase quantity"
+          variant="outline"
+          size="icon"
+          onClick={handleIncreaseQuantity}
+        >
           <ChevronRightIcon className="size-4" />
         </Button>
       </div>
@@ -66,7 +82,12 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         </p>
       </div>
 
-      <Button className="mt-8 font-bold uppercase">
+      <Button
+        type="button"
+        aria-label="Add product to cart"
+        className="mt-8 font-bold uppercase"
+        onClick={handleAddProductToCart}
+      >
         Adicionar ao carrinho
       </Button>
 

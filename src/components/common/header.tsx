@@ -12,6 +12,7 @@ import {
   ShoppingCartIcon,
 } from 'lucide-react'
 
+import { Cart } from '@/components/common/cart'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
@@ -39,7 +40,12 @@ export function Header() {
     <Card className="flex items-center justify-between p-[1.875rem]">
       <Sheet>
         <SheetTrigger asChild>
-          <Button aria-label="Toggle Menu" size="icon" variant="outline">
+          <Button
+            type="button"
+            aria-label="Toggle Menu"
+            size="icon"
+            variant="outline"
+          >
             <MenuIcon className="size-4" />
           </Button>
         </SheetTrigger>
@@ -74,6 +80,7 @@ export function Header() {
           <div className="mt-4 flex flex-col gap-2">
             {status === 'unauthenticated' && (
               <Button
+                type="button"
                 variant="outline"
                 className="justify-start gap-2"
                 onClick={handleLogin}
@@ -85,6 +92,7 @@ export function Header() {
 
             {status === 'authenticated' && (
               <Button
+                type="button"
                 variant="outline"
                 className="justify-start gap-2"
                 onClick={handleLogout}
@@ -94,12 +102,20 @@ export function Header() {
               </Button>
             )}
 
-            <Button variant="outline" className="justify-start gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              className="justify-start gap-2"
+            >
               <HomeIcon className="size-4" />
               Início
             </Button>
 
-            <Button variant="outline" className="justify-start gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              className="justify-start gap-2"
+            >
               <PercentIcon className="size-4" />
               Ofertas
             </Button>
@@ -122,9 +138,21 @@ export function Header() {
         </h1>
       </Link>
 
-      <Button aria-label="Open shopping cart" size="icon" variant="outline">
-        <ShoppingCartIcon className="size-4" />
-      </Button>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button
+            type="button"
+            aria-label="Open shopping cart"
+            size="icon"
+            variant="outline"
+          >
+            <ShoppingCartIcon className="size-4" />
+          </Button>
+        </SheetTrigger>
+        <SheetContent>
+          <Cart />
+        </SheetContent>
+      </Sheet>
     </Card>
   )
 }
