@@ -1,5 +1,6 @@
-import { cn } from '@/lib/utils'
 import Image, { type ImageProps } from 'next/image'
+
+import { cn } from '@/lib/utils'
 
 interface PromoBanner extends ImageProps {}
 

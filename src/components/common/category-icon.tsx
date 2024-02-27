@@ -1,4 +1,3 @@
-import { CATEGORY_SLUGS } from '@/lib/constants'
 import type { LucideProps } from 'lucide-react'
 import {
   KeyboardIcon,
@@ -8,6 +7,8 @@ import {
   MonitorIcon,
   SpeakerIcon,
 } from 'lucide-react'
+
+import { CATEGORY_SLUGS } from '@/lib/constants'
 
 interface CategoryIconProps extends LucideProps {
   slug: string

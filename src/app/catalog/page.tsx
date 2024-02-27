@@ -1,12 +1,13 @@
+import Link from 'next/link'
 import { LayoutGridIcon } from 'lucide-react'
 
-import { prisma } from '@/lib/prisma'
+import { db } from '@/lib/prisma'
 import { Badge } from '@/components/ui/badge'
 
 import { CategoryItem } from './_components/category-item'
 
 export default async function CatalogPage() {
-  const categories = await prisma.category.findMany()
+  const categories = await db.category.findMany()
 
   return (
     <main className="flex flex-col gap-8 p-5">
@@ -20,7 +21,9 @@ export default async function CatalogPage() {
 
       <div className="grid grid-cols-2 gap-8">
         {categories.map((category) => (
-          <CategoryItem key={category.id} category={category} />
+          <Link key={category.id} href={`/category/${category.slug}/products`}>
+            <CategoryItem category={category} />
+          </Link>
         ))}
       </div>
     </main>

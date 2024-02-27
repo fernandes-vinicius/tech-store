@@ -1,5 +1,5 @@
-import { prisma } from '@/lib/prisma'
 import { CATEGORY_SLUGS } from '@/lib/constants'
+import { db } from '@/lib/prisma'
 
 import { Categories } from './_components/categories'
 import { ProductList } from './_components/product-list'
@@ -7,7 +7,7 @@ import { SectionTitle } from './_components/section-title'
 import { PromoBanner } from './_components/promo-banner'
 
 export default async function Home() {
-  const deals = await prisma.product.findMany({
+  const deals = await db.product.findMany({
     where: {
       discountPercentage: {
         gt: 0,
@@ -15,7 +15,7 @@ export default async function Home() {
     },
   })
 
-  const keyboards = await prisma.product.findMany({
+  const keyboards = await db.product.findMany({
     where: {
       category: {
         slug: CATEGORY_SLUGS.KEYBOARDS,
@@ -23,7 +23,7 @@ export default async function Home() {
     },
   })
 
-  const mouses = await prisma.product.findMany({
+  const mouses = await db.product.findMany({
     where: {
       category: {
         slug: CATEGORY_SLUGS.MOUSES,
