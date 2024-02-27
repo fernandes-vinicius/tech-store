@@ -12,10 +12,14 @@ interface CartProductProps {
 }
 
 export function CartItem({ product }: CartProductProps) {
-  const { decreaseProductQuantity } = useCart()
+  const { decreaseProductQuantity, increaseProductQuantity } = useCart()
 
   function handleDecreaseProductQuantity() {
     decreaseProductQuantity(product.id)
+  }
+
+  function handleIncreaseProductQuantity() {
+    increaseProductQuantity(product.id)
   }
 
   return (
@@ -65,7 +69,7 @@ export function CartItem({ product }: CartProductProps) {
               variant="outline"
               size="icon"
               className="size-8"
-              // onClick={handleIncreaseQuantity}
+              onClick={handleIncreaseProductQuantity}
             >
               <ChevronRightIcon className="size-4" />
             </Button>
