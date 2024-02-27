@@ -17,11 +17,16 @@ export default async function Home() {
 
   const keyboards = await prisma.product.findMany({
     where: {
-      discountPercentage: {
-        gt: 0,
-      },
       category: {
         slug: CATEGORY_SLUGS.KEYBOARDS,
+      },
+    },
+  })
+
+  const mouses = await prisma.product.findMany({
+    where: {
+      category: {
+        slug: CATEGORY_SLUGS.MOUSES,
       },
     },
   })
@@ -53,6 +58,11 @@ export default async function Home() {
       </div>
 
       <PromoBanner src="/banner-fones.png" alt="Até 20% de desconto em Fones" />
+
+      <div className="flex flex-col gap-5">
+        <SectionTitle>Mouses</SectionTitle>
+        <ProductList products={mouses} />
+      </div>
     </main>
   )
 }
