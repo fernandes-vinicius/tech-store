@@ -6,7 +6,7 @@ import { env } from '@/lib/env'
 import { stripe } from '@/lib/stripe'
 import { type CartProduct } from '@/providers/cart-provider'
 
-export async function createCheckout(products: CartProduct[]) {
+export async function createCheckout(products: CartProduct[], orderId: string) {
   const successUrl = `${env.NEXT_PUBLIC_APP_URL}/success?session_id={CHECKOUT_SESSION_ID}`
   const cancelUrl = `${env.NEXT_PUBLIC_APP_URL}/`
 
@@ -31,8 +31,10 @@ export async function createCheckout(products: CartProduct[]) {
     mode: 'payment',
     success_url: successUrl,
     cancel_url: cancelUrl,
+    metadata: {
+      orderId,
+    },
     line_items: lineItems,
-    // expand: ['line_items', 'line_items.data.price.product'],
     expand: ['line_items'],
   })
 

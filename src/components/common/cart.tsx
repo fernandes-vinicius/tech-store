@@ -28,9 +28,9 @@ export function Cart() {
     }
 
     try {
-      await createOrder(products, session.user.id)
+      const order = await createOrder(products, session.user.id)
 
-      const checkout = await createCheckout(products)
+      const checkout = await createCheckout(products, order.id)
 
       const stripe = await loadStripe(env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 

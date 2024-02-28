@@ -4,6 +4,15 @@ const prisma = new PrismaClient()
 
 async function main() {
   try {
+    // Delete all before insert new data
+    await prisma.orderProduct.deleteMany()
+    await prisma.order.deleteMany()
+    await prisma.user.deleteMany()
+    await prisma.product.deleteMany()
+    await prisma.category.deleteMany()
+
+    // Insert data
+
     const mousesCategory = await prisma.category.create({
       data: {
         name: 'Mouses',

@@ -7,7 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "prisma generate"
+    "prepare": "prisma generate",
+    "prisma:seed": "npx prisma db seed",
+    "prisma:studio": "npx prisma studio",
+    "prisma:migrate-dev": "npx prisma migrate dev",
+    "stripe:login": "stripe login",
+    "stripe:listen": "stripe listen --forward-to localhost:3000/api/webhooks"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"

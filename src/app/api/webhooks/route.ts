@@ -1,4 +1,5 @@
 import { env } from '@/lib/env'
+import { db } from '@/lib/prisma'
 import { stripe } from '@/lib/stripe'
 
 async function handler(request: Request) {
@@ -26,15 +27,21 @@ async function handler(request: Request) {
     switch (event.type) {
       case 'checkout.session.completed':
         {
-          const sessionId = event.data.object.id
+          const eventDataObj = event.data.object
+          const sessionId = eventDataObj.id
 
-          const session = await stripe.checkout.sessions.retrieve(sessionId, {
+          await stripe.checkout.sessions.retrieve(sessionId, {
             expand: ['line_items', 'line_items.data.price.product'],
           })
 
-          console.log('Success', session.line_items?.data)
-
-          // TODO - save order in database
+          await db.order.update({
+            where: {
+              id: eventDataObj.metadata?.orderId,
+            },
+            data: {
+              status: 'PAYMENT_CONFIRMED',
+            },
+          })
         }
         break
       // ... handle other event types
