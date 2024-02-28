@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import { fontFamily } from 'tailwindcss/defaultTheme'
 
 const config = {
   darkMode: ['class'],
@@ -13,6 +14,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)', ...fontFamily.sans],
+      },
       backgroundImage: {
         'category-item-gradient':
           'linear-gradient(45deg, #5033C3 0%, rgba(80, 51, 195, 0.20) 100%);',
