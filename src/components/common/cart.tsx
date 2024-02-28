@@ -1,9 +1,13 @@
 'use client'
 
+import { useSession } from 'next-auth/react'
+
 import { loadStripe } from '@stripe/stripe-js'
 import { ShoppingCartIcon } from 'lucide-react'
+import { toast } from 'sonner'
 
 import { createCheckout } from '@/actions/checkout'
+import { createOrder } from '@/actions/order'
 import { CartItem } from '@/components/common/cart-item'
 import { CartSummary } from '@/components/common/cart-summary'
 import { Badge } from '@/components/ui/badge'
@@ -16,8 +20,16 @@ import { useCart } from '@/providers/cart-provider'
 export function Cart() {
   const { products } = useCart()
 
+  const { data: session } = useSession()
+
   async function handleCheckout() {
+    if (!session?.user) {
+      return toast.error('Faça login para realizar o checkout')
+    }
+
     try {
+      await createOrder(products, session.user.id)
+
       const checkout = await createCheckout(products)
 
       const stripe = await loadStripe(env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
@@ -25,6 +37,7 @@ export function Cart() {
       stripe?.redirectToCheckout({ sessionId: checkout.id })
     } catch (error) {
       console.log('CHECKOUT ERROR', error)
+      toast.error('Ocorreu um erro ao realizar o checkout')
     }
   }
 

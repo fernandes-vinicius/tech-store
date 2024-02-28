@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 
 import { Footer } from '@/components/common/footer'
 import { Header } from '@/components/common/header'
+import { Toaster } from '@/components/ui/sonner'
 import { fontSans } from '@/lib/fonts'
 import { SEO } from '@/lib/seo'
 import { AuthProvider } from '@/providers/auth-provider'
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </div>
           </CartProvider>
         </AuthProvider>
+        <Toaster richColors />
       </body>
     </html>
   )
