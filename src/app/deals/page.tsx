@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
 import { PercentIcon } from 'lucide-react'
@@ -6,6 +7,10 @@ import { ProductItem } from '@/components/common/product-item'
 import { Badge } from '@/components/ui/badge'
 import { db } from '@/lib/prisma'
 import { computeProductTotalPrice } from '@/lib/utils'
+
+export const metadata: Metadata = {
+  title: 'Ofertas',
+}
 
 export default async function DealsPage() {
   const deals = await db.product.findMany({

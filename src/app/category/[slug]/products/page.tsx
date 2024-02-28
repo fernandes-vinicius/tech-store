@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
 import { CategoryIcon } from '@/components/common/category-icon'
@@ -9,6 +10,26 @@ import { computeProductTotalPrice } from '@/lib/utils'
 interface ProductsPageProps {
   params: {
     slug: string
+  }
+}
+
+export async function generateMetadata({
+  params,
+}: ProductsPageProps): Promise<Metadata> {
+  const slug = params.slug
+
+  const category = await db.category.findFirst({
+    where: {
+      slug,
+    },
+  })
+
+  if (!category) {
+    return {}
+  }
+
+  return {
+    title: category.name,
   }
 }
 

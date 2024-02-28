@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+
 import { ProductList } from '@/components/common/product-list'
 import { SectionTitle } from '@/components/common/section-title'
 import { db } from '@/lib/prisma'
@@ -9,6 +11,27 @@ import { ProductGallery } from './_components/product-gallery'
 interface ProductPageProps {
   params: {
     slug: string
+  }
+}
+
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
+  const slug = params.slug
+
+  const product = await db.product.findFirst({
+    where: {
+      slug,
+    },
+  })
+
+  if (!product) {
+    return {}
+  }
+
+  return {
+    title: product.name,
+    description: product.description,
   }
 }
 

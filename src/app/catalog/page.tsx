@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 
 import { LayoutGridIcon } from 'lucide-react'
@@ -6,6 +7,10 @@ import { Badge } from '@/components/ui/badge'
 import { db } from '@/lib/prisma'
 
 import { CategoryItem } from './_components/category-item'
+
+export const metadata: Metadata = {
+  title: 'Catálogo',
+}
 
 export default async function CatalogPage() {
   const categories = await db.category.findMany()
