@@ -57,15 +57,18 @@ export function Cart() {
         </ScrollArea>
       </div>
 
-      <CartSummary />
+      {products.length > 0 && <CartSummary />}
 
-      <Button
-        type="button"
-        className="font-bold uppercase"
-        onClick={handleCheckout}
-      >
-        Finalizar compra
-      </Button>
+      {products.length > 0 && (
+        <Button
+          type="button"
+          disabled={products.length === 0}
+          onClick={handleCheckout}
+          className="font-bold uppercase"
+        >
+          Finalizar compra
+        </Button>
+      )}
     </div>
   )
 }
