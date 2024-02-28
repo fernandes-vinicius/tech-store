@@ -32,6 +32,8 @@ export async function createCheckout(products: CartProduct[]) {
     success_url: successUrl,
     cancel_url: cancelUrl,
     line_items: lineItems,
+    // expand: ['line_items', 'line_items.data.price.product'],
+    expand: ['line_items'],
   })
 
   return checkoutSession
