@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useMemo, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 import { type ProductWithTotal } from '@/lib/utils'
 
@@ -31,7 +31,13 @@ const CartContext = createContext<ICartContext>({
 })
 
 export function CartProvider({ children }: Readonly<React.PropsWithChildren>) {
-  const [products, setProducts] = useState<CartProduct[]>([])
+  const [products, setProducts] = useState<CartProduct[]>(() => {
+    return JSON.parse(localStorage.getItem('@tech-store/cart-products') || '[]')
+  })
+
+  useEffect(() => {
+    localStorage.setItem('@tech-store/cart-products', JSON.stringify(products))
+  }, [products])
 
   // Total without discount
   const subtotal = useMemo(() => {
