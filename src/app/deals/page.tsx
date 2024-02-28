@@ -1,30 +1,20 @@
 import Link from 'next/link'
 
-import { CategoryIcon } from '@/components/common/category-icon'
+import { PercentIcon } from 'lucide-react'
+
 import { ProductItem } from '@/components/common/product-item'
 import { Badge } from '@/components/ui/badge'
 import { db } from '@/lib/prisma'
 import { computeProductTotalPrice } from '@/lib/utils'
 
-interface ProductsPageProps {
-  params: {
-    slug: string
-  }
-}
-
-export default async function ProductsPage({ params }: ProductsPageProps) {
-  const category = await db.category.findFirst({
+export default async function DealsPage() {
+  const deals = await db.product.findMany({
     where: {
-      slug: params.slug,
-    },
-    include: {
-      products: true,
+      discountPercentage: {
+        gt: 0,
+      },
     },
   })
-
-  if (!category) {
-    return null
-  }
 
   return (
     <main className="flex flex-col gap-8 p-5">
@@ -32,12 +22,12 @@ export default async function ProductsPage({ params }: ProductsPageProps) {
         variant="outline"
         className="w-fit gap-1 border-primary px-3 py-1.5 text-base font-bold uppercase"
       >
-        <CategoryIcon slug={params.slug} strokeWidth={3} />
-        {category.name}
+        <PercentIcon className="size-4 fill-foreground" />
+        Ofertas
       </Badge>
 
       <div className="grid grid-cols-2 gap-4">
-        {category.products.map((product) => (
+        {deals.map((product) => (
           <Link key={product.id} href={`/product/${product.slug}`}>
             <ProductItem product={computeProductTotalPrice(product)} />
           </Link>

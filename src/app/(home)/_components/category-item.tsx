@@ -1,7 +1,7 @@
 import { type Category } from '@prisma/client'
 
-import { Badge } from '@/components/ui/badge'
 import { CategoryIcon } from '@/components/common/category-icon'
+import { Badge } from '@/components/ui/badge'
 
 interface CategoryItemProps {
   category: Category

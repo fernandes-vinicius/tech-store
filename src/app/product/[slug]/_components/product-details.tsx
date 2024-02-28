@@ -1,10 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
 import { DiscountBadge } from '@/components/common/discount-badge'
+import { Button } from '@/components/ui/button'
 import { type ProductWithTotal, formatCurrency } from '@/lib/utils'
 import { useCart } from '@/providers/cart-provider'
 

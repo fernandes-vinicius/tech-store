@@ -1,10 +1,10 @@
 import { ProductList } from '@/components/common/product-list'
-import { computeProductTotalPrice } from '@/lib/utils'
-import { db } from '@/lib/prisma'
-
-import { ProductGallery } from './_components/product-gallery'
-import { ProductDetails } from './_components/product-details'
 import { SectionTitle } from '@/components/common/section-title'
+import { db } from '@/lib/prisma'
+import { computeProductTotalPrice } from '@/lib/utils'
+
+import { ProductDetails } from './_components/product-details'
+import { ProductGallery } from './_components/product-gallery'
 
 interface ProductPageProps {
   params: {

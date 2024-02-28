@@ -9,9 +9,9 @@ import { CartSummary } from '@/components/common/cart-summary'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { useCart } from '@/providers/cart-provider'
-import { computeProductTotalPrice } from '@/lib/utils'
 import { env } from '@/lib/env'
+import { computeProductTotalPrice } from '@/lib/utils'
+import { useCart } from '@/providers/cart-provider'
 
 export function Cart() {
   const { products } = useCart()

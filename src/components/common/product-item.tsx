@@ -17,6 +17,8 @@ export function ProductItem({ product }: ProductItemProps) {
           height={0}
           width={0}
           sizes="100vw"
+          priority
+          quality={100}
           className="h-auto w-auto max-w-[70%]"
           style={{ objectFit: 'contain' }}
         />

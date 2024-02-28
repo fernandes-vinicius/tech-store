@@ -1,11 +1,12 @@
 'use client'
 
 import Image from 'next/image'
+
 import { ChevronLeftIcon, ChevronRightIcon, TrashIcon } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-import { useCart, type CartProduct } from '@/providers/cart-provider'
 import { formatCurrency } from '@/lib/utils'
+import { useCart, type CartProduct } from '@/providers/cart-provider'
 
 interface CartProductProps {
   product: CartProduct

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+
 import { type Category } from '@prisma/client'
 
 interface CategoryItemProps {

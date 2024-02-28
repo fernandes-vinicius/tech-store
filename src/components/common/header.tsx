@@ -1,7 +1,7 @@
 'use client'
 
-import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
+import Link from 'next/link'
 
 import {
   HomeIcon,
@@ -111,14 +111,14 @@ export function Header() {
               </Button>
             </SheetClose>
 
-            <Button
-              type="button"
-              variant="outline"
-              className="justify-start gap-2"
-            >
-              <PercentIcon className="size-4" />
-              Ofertas
-            </Button>
+            <SheetClose asChild>
+              <Button asChild variant="outline" className="justify-start gap-2">
+                <Link href="/deals">
+                  <PercentIcon className="size-4" />
+                  Ofertas
+                </Link>
+              </Button>
+            </SheetClose>
 
             <SheetClose asChild>
               <Button asChild variant="outline" className="justify-start gap-2">

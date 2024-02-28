@@ -1,4 +1,5 @@
 import Link from 'next/link'
+
 import { type Product } from '@prisma/client'
 
 import { ProductItem } from '@/components/common/product-item'

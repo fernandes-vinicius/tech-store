@@ -1,8 +1,9 @@
 import Link from 'next/link'
+
 import { LayoutGridIcon } from 'lucide-react'
 
-import { db } from '@/lib/prisma'
 import { Badge } from '@/components/ui/badge'
+import { db } from '@/lib/prisma'
 
 import { CategoryItem } from './_components/category-item'
 
@@ -19,7 +20,7 @@ export default async function CatalogPage() {
         Catálogo
       </Badge>
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-2 gap-4">
         {categories.map((category) => (
           <Link key={category.id} href={`/category/${category.slug}/products`}>
             <CategoryItem category={category} />
