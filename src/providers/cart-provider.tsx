@@ -4,6 +4,8 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 import { type ProductWithTotal } from '@/lib/utils'
 
+const STORAGE_KEY = '@tech-store/cart-products'
+
 export interface CartProduct extends ProductWithTotal {
   quantity: number
 }
@@ -32,11 +34,16 @@ const CartContext = createContext<ICartContext>({
 
 export function CartProvider({ children }: Readonly<React.PropsWithChildren>) {
   const [products, setProducts] = useState<CartProduct[]>(() => {
-    return JSON.parse(localStorage.getItem('@tech-store/cart-products') || '[]')
+    if (typeof window !== 'undefined') {
+      return JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
+    }
+    return []
   })
 
   useEffect(() => {
-    localStorage.setItem('@tech-store/cart-products', JSON.stringify(products))
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(products))
+    }
   }, [products])
 
   // Total without discount
