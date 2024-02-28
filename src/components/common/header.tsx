@@ -102,14 +102,14 @@ export function Header() {
               </Button>
             )}
 
-            <Button
-              type="button"
-              variant="outline"
-              className="justify-start gap-2"
-            >
-              <HomeIcon className="size-4" />
-              Início
-            </Button>
+            <SheetClose asChild>
+              <Button asChild variant="outline" className="justify-start gap-2">
+                <Link href="/">
+                  <HomeIcon className="size-4" />
+                  Início
+                </Link>
+              </Button>
+            </SheetClose>
 
             <Button
               type="button"
