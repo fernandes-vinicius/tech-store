@@ -14,6 +14,15 @@ export function formatCurrency(value: number) {
   return formatter.format(value)
 }
 
+export function formatDate(date: Date) {
+  const formatter = new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: '2-digit',
+  })
+  return formatter.format(date)
+}
+
 export interface ProductWithTotal extends Product {
   totalPrice: number
 }

@@ -8,6 +8,7 @@ import {
   ListOrderedIcon,
   LogInIcon,
   MenuIcon,
+  PackageSearchIcon,
   PercentIcon,
   ShoppingCartIcon,
 } from 'lucide-react'
@@ -107,6 +108,15 @@ export function Header() {
                 <Link href="/">
                   <HomeIcon className="size-4" />
                   Início
+                </Link>
+              </Button>
+            </SheetClose>
+
+            <SheetClose asChild>
+              <Button asChild variant="outline" className="justify-start gap-2">
+                <Link href="/orders">
+                  <PackageSearchIcon className="size-4" />
+                  Meus Pedidos
                 </Link>
               </Button>
             </SheetClose>
