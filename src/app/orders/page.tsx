@@ -3,11 +3,10 @@ import { redirect } from 'next/navigation'
 
 import { PackageSearchIcon } from 'lucide-react'
 
+import { OrderItem } from '@/components/common/order-item'
 import { Badge } from '@/components/ui/badge'
 import { authOptions } from '@/lib/auth'
 import { db } from '@/lib/prisma'
-
-import { OrderItem } from './_components/order-item'
 
 export default async function OrdersPage() {
   const session = await getServerSession(authOptions)
@@ -21,7 +20,11 @@ export default async function OrdersPage() {
       userId: session.user.id,
     },
     include: {
-      orderProducts: true,
+      orderProducts: {
+        include: {
+          product: true,
+        },
+      },
     },
   })
 
