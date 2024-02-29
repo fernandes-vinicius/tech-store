@@ -1,4 +1,4 @@
-<!-- <h1 align="center"> Tech Store </h1> -->
+<h1 align="center"> Tech Store </h1>
 
 ![Cover](/Cover.png)
 
