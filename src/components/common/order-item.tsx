@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/accordion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
+import { MAP_ORDER_STATUS } from '@/lib/constants'
 import { computeProductTotalPrice, formatDate } from '@/lib/utils'
 
 interface OrderItemProps {
@@ -63,8 +64,7 @@ export function OrderItem({ order, index }: OrderItemProps) {
                   <div className="flex flex-col font-bold">
                     <strong className="uppercase">Status</strong>
                     <p className="text-[#8162FF]">
-                      {/* TODO : translate status */}
-                      {order.status}
+                      {MAP_ORDER_STATUS[order.status]}
                     </p>
                   </div>
 
