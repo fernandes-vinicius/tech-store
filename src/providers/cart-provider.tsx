@@ -49,7 +49,7 @@ export function CartProvider({ children }: Readonly<React.PropsWithChildren>) {
   // Total without discount
   const subtotal = useMemo(() => {
     return products.reduce((acc, product) => {
-      return acc + Number(product.basePrice)
+      return acc + Number(product.basePrice) * product.quantity
     }, 0)
   }, [products])
 
@@ -60,7 +60,7 @@ export function CartProvider({ children }: Readonly<React.PropsWithChildren>) {
     }, 0)
   }, [products])
 
-  const totalDiscount = subtotal > total ? subtotal - total : total - subtotal
+  const totalDiscount = subtotal - total
 
   function addProductToCart(product: CartProduct) {
     const productAlreadyInCart = products.some(

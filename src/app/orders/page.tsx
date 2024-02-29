@@ -39,8 +39,8 @@ export default async function OrdersPage() {
       </Badge>
 
       <div className="flex flex-col gap-5">
-        {orders.map((order) => (
-          <OrderItem key={order.id} order={order} />
+        {orders.map((order, index) => (
+          <OrderItem key={order.id} order={order} index={index + 1} />
         ))}
       </div>
     </main>

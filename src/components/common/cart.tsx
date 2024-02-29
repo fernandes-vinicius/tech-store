@@ -9,7 +9,7 @@ import { toast } from 'sonner'
 import { createCheckout } from '@/actions/checkout'
 import { createOrder } from '@/actions/order'
 import { CartItem } from '@/components/common/cart-item'
-import { CartSummary } from '@/components/common/cart-summary'
+import { Summary } from '@/components/common/summary'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
@@ -18,7 +18,7 @@ import { computeProductTotalPrice } from '@/lib/utils'
 import { useCart } from '@/providers/cart-provider'
 
 export function Cart() {
-  const { products } = useCart()
+  const { products, subtotal, totalDiscount, total } = useCart()
 
   const { data: session } = useSession()
 
@@ -70,7 +70,13 @@ export function Cart() {
         </ScrollArea>
       </div>
 
-      {products.length > 0 && <CartSummary />}
+      {products.length > 0 && (
+        <Summary
+          subtotal={subtotal}
+          totalDiscount={totalDiscount}
+          total={total}
+        />
+      )}
 
       {products.length > 0 && (
         <Button
