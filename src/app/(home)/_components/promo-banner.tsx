@@ -11,11 +11,10 @@ export function PromoBanner({ className, src, alt, ...props }: PromoBanner) {
       alt={alt}
       width={0}
       height={0}
-      className={cn('h-auto w-full px-5', className)}
       sizes="100vw"
       priority
       quality={100}
-      // fill
+      className={cn('h-auto w-full', className)}
       {...props}
     />
   )

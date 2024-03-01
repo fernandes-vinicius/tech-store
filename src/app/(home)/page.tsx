@@ -32,36 +32,50 @@ export default async function Home() {
   })
 
   return (
-    <main className="flex flex-col gap-8 pb-8">
-      <PromoBanner
-        src="/banner-55-off.png"
-        alt="Até 55% de desconto só esse mês"
-      />
-
-      <div className="px-5">
-        <Categories />
+    <main role="main" id="home">
+      <div className="mx-auto w-full max-w-[1920px]">
+        <PromoBanner
+          src="/deals-banner-desktop.png"
+          alt="Até 55% de desconto só esse mês"
+          className="hidden lg:block"
+        />
       </div>
 
-      <div className="flex flex-col gap-5">
-        <SectionTitle>Ofertas</SectionTitle>
-        <ProductList products={deals} />
-      </div>
+      <div className="flex flex-col gap-8 py-8 lg:container lg:gap-10">
+        <PromoBanner
+          src="/deals-banner-mobile.png"
+          alt="Até 55% de desconto só esse mês"
+          className="px-5 lg:hidden"
+        />
 
-      <PromoBanner
-        src="/banner-mouses.png"
-        alt="Até 55% de desconto em Mouses"
-      />
+        <div className="px-5 lg:mt-2">
+          <Categories />
+        </div>
 
-      <div className="flex flex-col gap-5">
-        <SectionTitle>Teclados</SectionTitle>
-        <ProductList products={keyboards} />
-      </div>
+        <div className="flex flex-col gap-5">
+          <SectionTitle>Ofertas</SectionTitle>
+          <ProductList products={deals} />
+        </div>
 
-      <PromoBanner src="/banner-fones.png" alt="Até 20% de desconto em Fones" />
+        <PromoBanner
+          src="/mouses-banner.png"
+          alt="Até 55% de desconto em Mouses"
+        />
 
-      <div className="flex flex-col gap-5">
-        <SectionTitle>Mouses</SectionTitle>
-        <ProductList products={mouses} />
+        <div className="flex flex-col gap-5">
+          <SectionTitle>Teclados</SectionTitle>
+          <ProductList products={keyboards} />
+        </div>
+
+        <PromoBanner
+          src="/headphones-banner.png"
+          alt="Até 20% de desconto em Fones"
+        />
+
+        <div className="flex flex-col gap-5">
+          <SectionTitle>Mouses</SectionTitle>
+          <ProductList products={mouses} />
+        </div>
       </div>
     </main>
   )
