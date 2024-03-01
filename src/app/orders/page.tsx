@@ -1,5 +1,4 @@
 import { getServerSession } from 'next-auth'
-import { redirect } from 'next/navigation'
 
 import { PackageSearchIcon } from 'lucide-react'
 
@@ -11,8 +10,8 @@ import { db } from '@/lib/prisma'
 export default async function OrdersPage() {
   const session = await getServerSession(authOptions)
 
-  if (!session?.user) {
-    redirect('/')
+  if (!session || !session.user) {
+    return <p>Access Denied</p>
   }
 
   const orders = await db.order.findMany({

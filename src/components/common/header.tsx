@@ -15,6 +15,7 @@ import {
 
 import { Cart } from '@/components/common/cart'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
@@ -25,9 +26,14 @@ import {
   SheetHeader,
   SheetTrigger,
 } from '@/components/ui/sheet'
+import { useCart } from '@/providers/cart-provider'
 
 export function Header() {
   const { data: session, status } = useSession()
+
+  const { products } = useCart()
+
+  const cartTotalItems = products.length
 
   async function handleLogin() {
     await signIn()
@@ -155,7 +161,13 @@ export function Header() {
             aria-label="Open shopping cart"
             size="icon"
             variant="outline"
+            className="relative"
           >
+            {cartTotalItems > 0 && (
+              <Badge className="absolute right-[calc(-1.25rem/2)] top-[calc(-1.25rem/2)]">
+                {cartTotalItems}
+              </Badge>
+            )}
             <ShoppingCartIcon className="size-4" />
           </Button>
         </SheetTrigger>
