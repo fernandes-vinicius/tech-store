@@ -8,7 +8,7 @@ export function DeliveryType({ className, ...props }: DeliveryTypeProps) {
   return (
     <div
       className={cn(
-        'flex items-center justify-between rounded-lg bg-accent px-5 py-2',
+        'flex items-center justify-between rounded-lg bg-[#2A2A2A] px-5 py-2',
         className,
       )}
       {...props}

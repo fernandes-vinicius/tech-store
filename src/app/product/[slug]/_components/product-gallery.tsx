@@ -19,8 +19,8 @@ export function ProductGallery({ name, imageUrls }: ProductGalleryProps) {
   }
 
   return (
-    <div className="flex flex-col gap-8">
-      <div className="flex h-[380px] w-full items-center justify-center bg-accent">
+    <div className="flex flex-col gap-8 lg:min-h-full">
+      <div className="flex h-[380px] w-full items-center justify-center overflow-hidden bg-accent lg:h-full lg:flex-1 lg:rounded-lg">
         <Image
           src={selectedImage}
           alt={name}
@@ -31,7 +31,7 @@ export function ProductGallery({ name, imageUrls }: ProductGalleryProps) {
         />
       </div>
 
-      <div className="grid grid-cols-4 gap-4 px-5">
+      <div className="grid grid-cols-4 gap-4 px-5 lg:px-0">
         {imageUrls.map((imageUrl) => (
           <button
             key={imageUrl}

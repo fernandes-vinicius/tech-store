@@ -37,21 +37,23 @@ export function ProductDetails({ product }: ProductDetailsProps) {
   }
 
   return (
-    <div className="flex flex-col">
-      <h2 className="text-lg">{product.name}</h2>
+    <div className="flex h-full flex-col lg:rounded-lg lg:bg-accent lg:p-10">
+      <h2 className="text-lg lg:text-2xl">{product.name}</h2>
 
       <div className="flex items-center gap-2">
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-2xl font-bold lg:text-3xl">
           {formatCurrency(product.totalPrice)}
         </h1>
 
         {product.discountPercentage > 0 && (
-          <DiscountBadge>{product.discountPercentage}</DiscountBadge>
+          <DiscountBadge className="lg:text-base">
+            {product.discountPercentage}
+          </DiscountBadge>
         )}
       </div>
 
       {product.discountPercentage > 0 && (
-        <p className="text-sm line-through opacity-75">
+        <p className="text-sm line-through opacity-75 lg:text-base">
           {formatCurrency(Number(product.basePrice))}
         </p>
       )}
@@ -82,7 +84,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
 
       <div className="mt-8 flex flex-col gap-2">
         <h3 className="text-sm font-bold">Descrição</h3>
-        <p className="text-justify text-xs leading-relaxed opacity-60">
+        <p className="text-justify text-xs leading-relaxed opacity-60 lg:line-clamp-[8]">
           {product.description}
         </p>
       </div>
