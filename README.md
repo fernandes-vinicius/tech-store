@@ -43,39 +43,36 @@ armazenamento e incorporações de vetores e muito outros recursos.
 
 ## 🚀 Instalação e Execução
 
-Para executar o That Movie localmente, siga estes passos:
+Clone o projeto e acesse a pasta do mesmo.
 
-**1. Clone o repositório em sua máquina local:**
 ```bash
 git clone https://github.com/fernandes-vinicius/tech-store.git
-```
-
-**2. Navegue até o diretório do projeto:**
-```bash
 cd tech-store
 ```
 
-**3. Instale as dependências utilizando npm:**
+Renomeie o arquivo **.env.example** para **.env** e preencha os valores das variáveis.
+
+- **DATABASE_URL:** Variavel contendo a string de conexão do seu banco de dados (No projeto foi utilizado o banco Postresql com o serviço [Supabase](https://supabase.com/)).
+
+- **GOOGLE_CLIENT_ID** e **GOOGLE_CLIENT_SECRET:** Para essas variáveis é necessário a criação de um projeto no [Google Developer Console](https://console.cloud.google.com/)
+
+- **STRIPE_SECRET_KEY:** Inserir o valor da secret key da conta no [Stripe](https://stripe.com/br)
+
+- **STRIPE_WEBHOOK_SECRET_KEY:** Rodar o comando npm run stripe:listen e pegar a key no output (Your webhook signing secret is...). Não fechar o terminal.
+
+- **NEXT_PUBLIC_APP_URL:** Em ambiente local pode ser utilizado o valor "http://localhost:3000"
+
+Para iniciar o projeto, siga os passos abaixo:
+
 ```bash
-npm install
+# Instalar as dependências
+$ npm install
+
+# Iniciar o projeto
+$ npm run dev
 ```
 
-**4. Configue as variáveis de ambiente:**
-- Crie uma conta no Stripe e siga a [documentação](https://docs.stripe.com/stripe-cli) para instalar a CLI do Stripe na sua máquina e fazer login na sua conta.
-- Em seguida, você precisa executar o script para dizer para o Stripe criar um ouvinte de [Webhook](https://docs.stripe.com/connect/webhooks) local para realizar testes de pagamento. 
-Copie a chave gerada pelo Webhook e adicione, junto com as demais chaves, no seu arquivo **.env**.
-```bash
-npm run stripe:listen
-```
-- Agora você precisa configurar as chaves do OAuth do Google. Crie seu App no [Google Develop Console](https://console.cloud.google.com) e adicione a **Client ID** e **Client Secret** ao **.env**.
-- Por último, entre em sua conta do Supabase, crie um novo projeto e copie a **Conection Pool** do seu Database e adicione na sua **DATABASE_URL** no **.env**.
-
-**5. Inicie o servidor de desenvolvimento:**
-```bash
-npm run dev
-```
-
-**6. Abra seu navegador e acesse [http://localhost:3000](http://localhost:3000) para visualizar a aplicação.**
+O app estará disponível no seu browser pelo endereço http://localhost:3000.
 
 ## 📃 Licença
 
