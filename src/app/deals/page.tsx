@@ -22,7 +22,7 @@ export default async function DealsPage() {
   })
 
   return (
-    <main className="flex flex-col gap-8 p-5">
+    <main role="main" id="deals" className="flex flex-col gap-8 p-5">
       <Badge variant="heading">
         <PercentIcon className="size-4" />
         Ofertas

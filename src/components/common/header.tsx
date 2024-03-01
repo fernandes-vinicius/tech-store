@@ -45,7 +45,7 @@ export function Header() {
   }
 
   return (
-    <Card className="flex items-center justify-between p-[1.875rem]">
+    <Card className="flex items-center justify-between rounded-none border-l-0 border-r-0 p-[1.875rem]">
       <Sheet>
         <SheetTrigger asChild>
           <Button

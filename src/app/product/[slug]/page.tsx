@@ -60,7 +60,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
 
   return (
-    <main className="flex flex-col pb-8">
+    <main role="main" id={product.name} className="flex flex-col pb-8">
       <ProductGallery name={product.name} imageUrls={product.imageUrls} />
 
       <div className="mt-8 px-5">

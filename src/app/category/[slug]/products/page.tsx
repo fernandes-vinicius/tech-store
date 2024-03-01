@@ -48,7 +48,7 @@ export default async function ProductsPage({ params }: ProductsPageProps) {
   }
 
   return (
-    <main className="flex flex-col gap-8 p-5">
+    <main role="main" id={category.name} className="flex flex-col gap-8 p-5">
       <Badge variant="heading">
         <CategoryIcon slug={params.slug} strokeWidth={3} />
         {category.name}

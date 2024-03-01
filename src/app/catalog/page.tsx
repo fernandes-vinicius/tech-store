@@ -16,7 +16,7 @@ export default async function CatalogPage() {
   const categories = await db.category.findMany()
 
   return (
-    <main className="flex flex-col gap-8 p-5">
+    <main role="main" id="catalog" className="flex flex-col gap-8 p-5">
       <Badge variant="heading">
         <LayoutGridIcon className="size-4 fill-foreground" />
         Catálogo

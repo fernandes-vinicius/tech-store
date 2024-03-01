@@ -28,7 +28,7 @@ export default async function OrdersPage() {
   })
 
   return (
-    <main className="flex flex-col gap-8 p-5">
+    <main role="main" id="orders" className="flex flex-col gap-8 p-5">
       <Badge variant="heading">
         <PackageSearchIcon className="size-4" />
         Meus Pedidos
