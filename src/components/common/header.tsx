@@ -70,7 +70,7 @@ export function Header() {
 
                 <div className="flex flex-col">
                   <p className="font-medium">{session.user.name}</p>
-                  <p className="text-sm opacity-75">Boas compras!</p>
+                  <p className="text-xs opacity-75">Boas compras!</p>
                 </div>
               </div>
 
