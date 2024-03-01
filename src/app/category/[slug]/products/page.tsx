@@ -49,10 +49,7 @@ export default async function ProductsPage({ params }: ProductsPageProps) {
 
   return (
     <main className="flex flex-col gap-8 p-5">
-      <Badge
-        variant="outline"
-        className="w-fit gap-1 border-primary px-3 py-1.5 text-base font-bold uppercase"
-      >
+      <Badge variant="heading">
         <CategoryIcon slug={params.slug} strokeWidth={3} />
         {category.name}
       </Badge>

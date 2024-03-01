@@ -43,11 +43,8 @@ export function Cart() {
 
   return (
     <div className="flex h-full flex-col gap-8">
-      <Badge
-        variant="outline"
-        className="w-fit gap-1 border-primary px-3 py-1.5 text-base font-bold uppercase"
-      >
-        <ShoppingCartIcon className="size-4 fill-foreground" />
+      <Badge variant="heading">
+        <ShoppingCartIcon className="size-4" />
         Carrinho
       </Badge>
 

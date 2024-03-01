@@ -11,10 +11,10 @@ export function CategoryItem({ category }: CategoryItemProps) {
   return (
     <Badge
       variant="outline"
-      className="w-full justify-center gap-2 rounded-lg py-3"
+      className="w-full justify-center gap-2 rounded-lg py-3 font-bold"
     >
       <CategoryIcon slug={category.slug} />
-      <span className="font-bold">{category.name}</span>
+      {category.name}
     </Badge>
   )
 }
