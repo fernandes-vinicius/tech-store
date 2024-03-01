@@ -26,6 +26,7 @@ import {
   SheetHeader,
   SheetTrigger,
 } from '@/components/ui/sheet'
+import { AuthProviders } from '@/lib/auth-providers'
 import { useCart } from '@/providers/cart-provider'
 
 export function Header() {
@@ -36,7 +37,7 @@ export function Header() {
   const cartTotalItems = products.length ?? 0
 
   async function handleLogin() {
-    await signIn()
+    await signIn(AuthProviders.GOOGLE)
   }
 
   async function handleLogout() {
