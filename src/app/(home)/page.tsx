@@ -57,10 +57,17 @@ export default async function Home() {
           <ProductList products={deals} />
         </div>
 
-        <PromoBanner
-          src="/mouses-banner.png"
-          alt="Até 55% de desconto em Mouses"
-        />
+        <div className="grid gap-9 px-5 lg:grid-cols-2">
+          <PromoBanner
+            src="/mouses-banner.png"
+            alt="Até 55% de desconto em Mouses"
+          />
+          <PromoBanner
+            src="/headphones-banner.png"
+            alt="Até 20% de desconto em Fones"
+            className="hidden lg:block"
+          />
+        </div>
 
         <div className="flex flex-col gap-5">
           <SectionTitle>Teclados</SectionTitle>
@@ -70,6 +77,7 @@ export default async function Home() {
         <PromoBanner
           src="/headphones-banner.png"
           alt="Até 20% de desconto em Fones"
+          className="px-5 lg:hidden"
         />
 
         <div className="flex flex-col gap-5">
