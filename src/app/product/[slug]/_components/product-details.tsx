@@ -3,6 +3,7 @@
 import { useState } from 'react'
 
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
+import { toast } from 'sonner'
 
 import { DiscountBadge } from '@/components/common/discount-badge'
 import { Button } from '@/components/ui/button'
@@ -32,6 +33,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
 
   function handleAddProductToCart() {
     addProductToCart({ ...product, quantity })
+    toast.info('Produto adicionado ao carrinho')
   }
 
   return (
