@@ -80,6 +80,12 @@ export default async function Home() {
           className="px-5 lg:hidden"
         />
 
+        <PromoBanner
+          src="/free-shipping-banner.png"
+          alt="Frete GRÁTIS para todo o Brasil"
+          className="hidden lg:block"
+        />
+
         <div className="flex flex-col gap-5">
           <SectionTitle>Mouses</SectionTitle>
           <ProductList products={mouses} />
