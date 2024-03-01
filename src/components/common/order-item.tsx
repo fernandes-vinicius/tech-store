@@ -46,21 +46,49 @@ export function OrderItem({ order, index }: OrderItemProps) {
 
   return (
     <Card>
-      <CardContent className="p-5">
+      <CardContent className="p-5 lg:p-8">
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value={`order-${order.id}`} className="border-b-0">
-            <AccordionTrigger className="py-0 hover:no-underline">
-              <div className="flex flex-col gap-1 text-left">
-                <h3 className="text-sm font-bold uppercase">
+            <AccordionTrigger
+              triggerLabel="Detalhes do pedido"
+              className="py-0 text-left hover:no-underline"
+            >
+              <div className="flex flex-col gap-1">
+                <h3 className="text-sm font-bold uppercase lg:text-base">
                   Número do pedido
                 </h3>
-                <span className="text-xs opacity-75">#{orderCode}</span>
+                <span className="text-xs opacity-75 lg:text-sm">
+                  #{orderCode}
+                </span>
+              </div>
+
+              <div className="hidden flex-col font-bold lg:flex">
+                <strong className="text-xs uppercase lg:text-base">
+                  Status
+                </strong>
+                <p className="text-[#8162FF] lg:text-sm">
+                  {MAP_ORDER_STATUS[order.status]}
+                </p>
+              </div>
+
+              <div className="hidden flex-col lg:flex">
+                <strong className="text-xs uppercase lg:text-base">Data</strong>
+                <p className="opacity-75 lg:text-sm">
+                  {formatDate(order.createdAt)}
+                </p>
+              </div>
+
+              <div className="hidden flex-col lg:flex">
+                <strong className="text-xs uppercase lg:text-base">
+                  Pagamento
+                </strong>
+                <p className="opacity-75 lg:text-sm">Cartão</p>
               </div>
             </AccordionTrigger>
 
             <AccordionContent className="!p-0">
-              <div className="flex flex-col gap-5 pt-5">
-                <div className="flex items-center justify-between text-xs">
+              <div className="flex flex-col gap-5 pt-5 lg:gap-8">
+                <div className="flex items-center justify-between text-xs lg:hidden">
                   <div className="flex flex-col font-bold">
                     <strong className="uppercase">Status</strong>
                     <p className="text-[#8162FF]">

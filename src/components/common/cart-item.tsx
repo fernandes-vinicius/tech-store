@@ -32,8 +32,8 @@ export function CartItem({ product }: CartProductProps) {
   }
 
   return (
-    <div className="flex w-full items-center gap-2">
-      <div className="flex h-[77px] w-[77px] items-center justify-center rounded-lg bg-accent">
+    <div className="flex w-full items-center gap-2 lg:gap-4">
+      <div className="flex h-[77px] w-[77px] items-center justify-center rounded-lg bg-accent lg:h-[91px] lg:w-[91px]">
         <Image
           src={product.imageUrls[0]}
           alt={product.name}
@@ -45,14 +45,14 @@ export function CartItem({ product }: CartProductProps) {
       </div>
 
       <div className="flex flex-1 flex-col">
-        <p className="text-xs">{product.name}</p>
+        <p className="text-xs lg:text-sm">{product.name}</p>
 
         <div className="flex items-center gap-2">
-          <strong className="text-sm">
+          <strong className="text-sm lg:text-base">
             {formatCurrency(product.totalPrice)}
           </strong>
           {product.discountPercentage > 0 && (
-            <span className="text-xs line-through opacity-75">
+            <span className="text-xs line-through opacity-75 lg:text-sm">
               {formatCurrency(Number(product.basePrice))}
             </span>
           )}
@@ -65,21 +65,21 @@ export function CartItem({ product }: CartProductProps) {
               aria-label="Decrease quantity"
               variant="outline"
               size="icon"
-              className="size-8"
+              className="size-8 lg:size-9"
               onClick={handleDecreaseProductQuantity}
             >
-              <ChevronLeftIcon className="size-4" />
+              <ChevronLeftIcon className="size-4 lg:size-5" />
             </Button>
-            <span className="text-sm leading-none">{product.quantity}</span>
+            <span className="text-sm lg:text-base">{product.quantity}</span>
             <Button
               type="button"
               aria-label="Increase quantity"
               variant="outline"
               size="icon"
-              className="size-8"
+              className="size-8 lg:size-9"
               onClick={handleIncreaseProductQuantity}
             >
-              <ChevronRightIcon className="size-4" />
+              <ChevronRightIcon className="size-4 lg:size-5" />
             </Button>
           </div>
 
@@ -88,10 +88,10 @@ export function CartItem({ product }: CartProductProps) {
             aria-label="Remove product from cart"
             size="icon"
             variant="outline"
-            className="size-8"
+            className="size-8 lg:size-9"
             onClick={handleRemoveProductFromCart}
           >
-            <TrashIcon className="size-4" />
+            <TrashIcon className="size-4 lg:size-5" />
           </Button>
         </div>
       </div>

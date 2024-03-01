@@ -13,8 +13,8 @@ export function OrderProductItem({ orderProduct }: OrderProductItemProps) {
   const product = computeProductTotalPrice(orderProduct.product)
 
   return (
-    <div className="flex items-center gap-4">
-      <div className="flex h-[77px] w-[77px] items-center justify-center rounded-lg bg-accent">
+    <div className="relative flex items-center gap-4">
+      <div className="flex aspect-square h-[77px] items-center justify-center rounded-lg bg-accent lg:h-[91px]">
         <Image
           src={orderProduct.product.imageUrls[0]}
           alt={orderProduct.product.name}
@@ -25,28 +25,35 @@ export function OrderProductItem({ orderProduct }: OrderProductItemProps) {
         />
       </div>
 
-      <div className="flex flex-1 flex-col gap-2">
+      <div className="flex flex-1 flex-col gap-2 lg:gap-2">
         <div className="w-fit rounded-md bg-accent px-3 py-1">
-          <p className="text-[0.625rem]">
+          <p className="text-[0.625rem] lg:text-xs">
             Vendido e entregue por:{' '}
             <span className="font-semibold">{SEO.name}</span>
           </p>
         </div>
 
-        <p className="text-xs">{product.name}</p>
+        <p className="text-xs lg:text-sm">{product.name}</p>
 
-        <div className="flex items-center gap-1">
-          <strong className="text-sm">
+        <p className="hidden text-[0.625rem] text-xs opacity-75 lg:block">
+          Quantidade: {orderProduct.quantity}
+        </p>
+
+        <div className="flex items-center gap-1 lg:absolute lg:bottom-0 lg:right-0 lg:h-full lg:flex-col lg:items-end lg:justify-center">
+          <strong className="text-sm lg:text-right lg:text-xl">
             {formatCurrency(product.totalPrice)}
           </strong>
 
           {product.discountPercentage > 0 && (
-            <span className="text-xs line-through opacity-60">
-              {formatCurrency(Number(product.basePrice))}
-            </span>
+            <p className="flex items-center gap-1 text-xs opacity-60 lg:text-right">
+              <span className="hidden lg:block">De:</span>
+              <span className="line-through">
+                {formatCurrency(Number(product.basePrice))}
+              </span>
+            </p>
           )}
 
-          <p className="ml-auto text-right text-[0.625rem] opacity-75">
+          <p className="ml-auto text-right text-[0.625rem] opacity-75 lg:hidden">
             Qtd: {orderProduct.quantity}
           </p>
         </div>

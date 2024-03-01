@@ -168,7 +168,7 @@ export function Header() {
             <ShoppingCartIcon className="size-4" />
           </Button>
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent className="lg:w-full lg:max-w-md">
           <Cart />
         </SheetContent>
       </Sheet>
