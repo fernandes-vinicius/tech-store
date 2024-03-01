@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { ProductList } from '@/components/common/product-list'
 import { SectionTitle } from '@/components/common/section-title'
 import { CATEGORY_SLUGS } from '@/lib/constants'
@@ -34,19 +36,23 @@ export default async function Home() {
   return (
     <main role="main" id="home">
       <div className="mx-auto w-full max-w-[1920px]">
-        <PromoBanner
-          src="/deals-banner-desktop.png"
-          alt="Até 55% de desconto só esse mês"
-          className="hidden lg:block"
-        />
+        <Link href="/deals">
+          <PromoBanner
+            src="/deals-banner-desktop.png"
+            alt="Até 55% de desconto só esse mês"
+            className="hidden lg:block"
+          />
+        </Link>
       </div>
 
       <div className="flex flex-col gap-8 py-8 lg:container lg:gap-10">
-        <PromoBanner
-          src="/deals-banner-mobile.png"
-          alt="Até 55% de desconto só esse mês"
-          className="px-5 lg:hidden"
-        />
+        <Link href="/deals">
+          <PromoBanner
+            src="/deals-banner-mobile.png"
+            alt="Até 55% de desconto só esse mês"
+            className="px-5 lg:hidden"
+          />
+        </Link>
 
         <div className="px-5 lg:mt-2">
           <Categories />
@@ -58,15 +64,19 @@ export default async function Home() {
         </div>
 
         <div className="grid gap-9 px-5 lg:grid-cols-2">
-          <PromoBanner
-            src="/mouses-banner.png"
-            alt="Até 55% de desconto em Mouses"
-          />
-          <PromoBanner
-            src="/headphones-banner.png"
-            alt="Até 20% de desconto em Fones"
-            className="hidden lg:block"
-          />
+          <Link href={`/category/${CATEGORY_SLUGS.MOUSES}/products`}>
+            <PromoBanner
+              src="/mouses-banner.png"
+              alt="Até 55% de desconto em Mouses"
+            />
+          </Link>
+          <Link href={`/category/${CATEGORY_SLUGS.HEADPHONES}/products`}>
+            <PromoBanner
+              src="/headphones-banner.png"
+              alt="Até 20% de desconto em Fones"
+              className="hidden lg:block"
+            />
+          </Link>
         </div>
 
         <div className="flex flex-col gap-5">
@@ -74,11 +84,13 @@ export default async function Home() {
           <ProductList products={keyboards} />
         </div>
 
-        <PromoBanner
-          src="/headphones-banner.png"
-          alt="Até 20% de desconto em Fones"
-          className="px-5 lg:hidden"
-        />
+        <Link href={`/category/${CATEGORY_SLUGS.HEADPHONES}/products`}>
+          <PromoBanner
+            src="/headphones-banner.png"
+            alt="Até 20% de desconto em Fones"
+            className="px-5 lg:hidden"
+          />
+        </Link>
 
         <PromoBanner
           src="/free-shipping-banner.png"
