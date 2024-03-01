@@ -31,19 +31,21 @@ export function ProductItem({ product, className }: ProductItemProps) {
       </div>
 
       <div className="flex flex-col gap-1">
-        <p className="truncate text-xs">{product.name}</p>
+        <p className="truncate text-xs lg:text-sm">{product.name}</p>
 
         {product.discountPercentage > 0 && (
           <div className="flex items-center gap-2 truncate">
-            <p className="font-bold">{formatCurrency(product.totalPrice)}</p>
-            <p className="truncate text-xs line-through opacity-75">
+            <p className="font-bold lg:text-lg">
+              {formatCurrency(product.totalPrice)}
+            </p>
+            <p className="truncate text-xs line-through opacity-75 lg:text-sm">
               {formatCurrency(Number(product.basePrice))}
             </p>
           </div>
         )}
 
         {product.discountPercentage === 0 && (
-          <p className="font-bold">
+          <p className="font-bold lg:text-lg">
             {formatCurrency(Number(product.basePrice))}
           </p>
         )}
