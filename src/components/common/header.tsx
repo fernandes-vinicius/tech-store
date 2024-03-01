@@ -14,8 +14,8 @@ import {
 } from 'lucide-react'
 
 import { Cart } from '@/components/common/cart'
+import { CartCounterBadge } from '@/components/common/cart-counter-badge'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
@@ -33,7 +33,7 @@ export function Header() {
 
   const { products } = useCart()
 
-  const cartTotalItems = products.length
+  const cartTotalItems = products.length ?? 0
 
   async function handleLogin() {
     await signIn()
@@ -163,11 +163,7 @@ export function Header() {
             variant="outline"
             className="relative"
           >
-            {cartTotalItems > 0 && (
-              <Badge className="absolute right-[calc(-1.25rem/2)] top-[calc(-1.25rem/2)]">
-                {cartTotalItems}
-              </Badge>
-            )}
+            <CartCounterBadge quantity={cartTotalItems} />
             <ShoppingCartIcon className="size-4" />
           </Button>
         </SheetTrigger>
