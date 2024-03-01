@@ -1,16 +1,17 @@
 import Image from 'next/image'
 
 import { DiscountBadge } from '@/components/common/discount-badge'
-import { formatCurrency, type ProductWithTotal } from '@/lib/utils'
+import { cn, formatCurrency, type ProductWithTotal } from '@/lib/utils'
 
 interface ProductItemProps {
   product: ProductWithTotal
+  className?: string
 }
 
-export function ProductItem({ product }: ProductItemProps) {
+export function ProductItem({ product, className }: ProductItemProps) {
   return (
-    <div className="flex w-full flex-col gap-4">
-      <div className="relative flex h-[170px] w-full items-center justify-center rounded-lg bg-accent">
+    <div className={cn('flex min-w-[156px] flex-col gap-4', className)}>
+      <div className="relative flex aspect-square w-full items-center justify-center rounded-lg bg-accent">
         <Image
           src={product.imageUrls[0]}
           alt={product.name}
@@ -19,8 +20,7 @@ export function ProductItem({ product }: ProductItemProps) {
           sizes="100vw"
           priority
           quality={100}
-          className="h-auto w-auto max-w-[70%]"
-          style={{ objectFit: 'contain' }}
+          className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
         />
 
         {product.discountPercentage > 0 && (
