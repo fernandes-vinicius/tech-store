@@ -2,18 +2,19 @@
 
 import { useState } from 'react'
 
+import { type Product } from '@prisma/client'
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import { toast } from 'sonner'
 
 import { DiscountBadge } from '@/components/common/discount-badge'
 import { Button } from '@/components/ui/button'
-import { type ProductWithTotal, formatCurrency } from '@/lib/utils'
+import { formatCurrency } from '@/lib/utils'
 import { useCart } from '@/providers/cart-provider'
 
 import { DeliveryType } from './delivery-type'
 
 interface ProductDetailsProps {
-  product: ProductWithTotal
+  product: Product & { totalPrice: number }
 }
 
 export function ProductDetails({ product }: ProductDetailsProps) {

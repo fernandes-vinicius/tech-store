@@ -32,7 +32,12 @@ export default async function DealsPage() {
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-[repeat(auto-fit,_minmax(156px,_1fr))] lg:gap-8">
           {deals.map((product) => (
             <Link key={product.id} href={`/product/${product.slug}`}>
-              <ProductItem product={computeProductTotalPrice(product)} />
+              <ProductItem
+                product={{
+                  ...product,
+                  totalPrice: computeProductTotalPrice(product),
+                }}
+              />
             </Link>
           ))}
         </div>

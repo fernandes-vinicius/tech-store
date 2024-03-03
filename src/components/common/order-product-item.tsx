@@ -10,7 +10,8 @@ interface OrderProductItemProps {
 }
 
 export function OrderProductItem({ orderProduct }: OrderProductItemProps) {
-  const product = computeProductTotalPrice(orderProduct.product)
+  const product = orderProduct.product
+  const productTotalPrice = computeProductTotalPrice(product)
 
   return (
     <div className="relative flex items-center gap-4">
@@ -41,7 +42,7 @@ export function OrderProductItem({ orderProduct }: OrderProductItemProps) {
 
         <div className="flex items-center gap-1 lg:absolute lg:bottom-0 lg:right-0 lg:h-full lg:flex-col lg:items-end lg:justify-center">
           <strong className="text-sm lg:text-right lg:text-xl">
-            {formatCurrency(product.totalPrice)}
+            {formatCurrency(productTotalPrice)}
           </strong>
 
           {product.discountPercentage > 0 && (

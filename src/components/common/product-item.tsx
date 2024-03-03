@@ -1,10 +1,12 @@
 import Image from 'next/image'
 
+import { type Product } from '@prisma/client'
+
 import { DiscountBadge } from '@/components/common/discount-badge'
-import { cn, formatCurrency, type ProductWithTotal } from '@/lib/utils'
+import { cn, formatCurrency } from '@/lib/utils'
 
 interface ProductItemProps {
-  product: ProductWithTotal
+  product: Product & { totalPrice: number }
   className?: string
 }
 

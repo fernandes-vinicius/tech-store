@@ -2,12 +2,13 @@
 
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
-import { type ProductWithTotal } from '@/lib/utils'
+import { type Product } from '@prisma/client'
 
 const STORAGE_KEY = '@tech-store/cart-products'
 
-export interface CartProduct extends ProductWithTotal {
+export interface CartProduct extends Product {
   quantity: number
+  totalPrice: number
 }
 
 interface ICartContext {

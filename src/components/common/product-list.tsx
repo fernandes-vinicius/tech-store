@@ -16,7 +16,10 @@ export async function ProductList({ products }: ProductListProps) {
         <Link key={product.id} href={`/product/${product.slug}`}>
           <div>
             <ProductItem
-              product={computeProductTotalPrice(product)}
+              product={{
+                ...product,
+                totalPrice: computeProductTotalPrice(product),
+              }}
               className="w-[156px] lg:w-[180px] lg:min-w-[180px]"
             />
           </div>

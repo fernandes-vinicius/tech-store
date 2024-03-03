@@ -60,7 +60,10 @@ export function Cart() {
             {products.map((product) => (
               <CartItem
                 key={product.id}
-                product={computeProductTotalPrice(product) as never}
+                product={{
+                  ...product,
+                  totalPrice: computeProductTotalPrice(product),
+                }}
               />
             ))}
           </div>

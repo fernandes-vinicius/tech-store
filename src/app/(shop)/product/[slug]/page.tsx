@@ -67,7 +67,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <ProductGallery name={product.name} imageUrls={product.imageUrls} />
           </div>
           <div className="px-5 lg:col-span-1 lg:px-0 2xl:col-span-2">
-            <ProductDetails product={computeProductTotalPrice(product)} />
+            <ProductDetails
+              product={{
+                ...product,
+                totalPrice: computeProductTotalPrice(product),
+              }}
+            />
           </div>
         </div>
 

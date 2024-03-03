@@ -1,5 +1,7 @@
 'use client'
 
+import { Prisma } from '@prisma/client'
+
 import {
   Table,
   TableBody,
@@ -8,13 +10,11 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { formatCurrency, type ProductWithTotal } from '@/lib/utils'
+import { formatCurrency } from '@/lib/utils'
 
-type ProductWithTotalPriceAndCategory = ProductWithTotal & {
-  category: {
-    name: string
-  }
-}
+type ProductWithTotalPriceAndCategory = Prisma.ProductGetPayload<{
+  include: { category: { select: { name: true } } }
+}> & { totalPrice: number }
 
 interface ProductsTableProps {
   products: ProductWithTotalPriceAndCategory[]

@@ -23,24 +23,16 @@ export function formatDate(date: Date) {
   return formatter.format(date)
 }
 
-export interface ProductWithTotal extends Product {
-  totalPrice: number
-}
-
-export function computeProductTotalPrice(product: Product): ProductWithTotal {
-  if (product.discountPercentage === 0) {
-    return {
-      ...product,
-      totalPrice: Number(product.basePrice),
-    }
+export function computeProductTotalPrice({
+  discountPercentage,
+  basePrice,
+}: Pick<Product, 'discountPercentage' | 'basePrice'>) {
+  if (discountPercentage === 0) {
+    return Number(basePrice)
   }
 
-  const discountPercentage = product.discountPercentage / 100
-  const discountTotal = Number(product.basePrice) * discountPercentage
-  const discountPrice = Number(product.basePrice) - discountTotal
+  const discountTotal = Number(basePrice) * (discountPercentage / 100)
+  const totalPrice = Number(basePrice) - discountTotal
 
-  return {
-    ...product,
-    totalPrice: discountPrice,
-  }
+  return totalPrice
 }
