@@ -25,7 +25,7 @@ export function OrderProductItem({ orderProduct }: OrderProductItemProps) {
         />
       </div>
 
-      <div className="flex flex-1 flex-col gap-2 lg:gap-2">
+      <div className="flex flex-1 flex-col gap-2 lg:gap-3">
         <div className="w-fit rounded-md bg-accent px-3 py-1">
           <p className="text-[0.625rem] lg:text-xs">
             Vendido e entregue por:{' '}

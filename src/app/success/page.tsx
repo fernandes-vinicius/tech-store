@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function SuccessPage() {
   return (
-    <main role="main" id="checkout-success" className="min-h-full p-6">
+    <main role="main" id="checkout-success" className="min-h-full p-8">
       <div className="flex flex-col items-center gap-8 text-center">
         <CheckCircleIcon className="size-10 text-green-400" />
 
