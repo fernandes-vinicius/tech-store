@@ -15,6 +15,7 @@ import {
 
 import { Cart } from '@/components/common/cart'
 import { CartCounterBadge } from '@/components/common/cart-counter-badge'
+import { TechStoreLogo } from '@/components/common/tech-store-logo'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
@@ -156,9 +157,7 @@ export function Header() {
       </Sheet>
 
       <Link href="/">
-        <h1 className="text-lg font-semibold">
-          <span className="font-bold uppercase text-primary">Tech</span> Store
-        </h1>
+        <TechStoreLogo />
       </Link>
 
       <Sheet>

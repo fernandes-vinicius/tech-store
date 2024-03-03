@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 
-import { Footer } from '@/components/common/footer'
 import { SEO } from '@/lib/seo'
 import { AuthProvider } from '@/providers/auth-provider'
+
+import { Sidebar } from './_components/sidebar'
 
 type AdminLayoutProps = Readonly<{ children: React.ReactNode }>
 
@@ -16,9 +17,9 @@ export const metadata: Metadata = {
 export default function AdminLayout({ children }: AdminLayoutProps) {
   return (
     <AuthProvider>
-      <div className="flex h-full flex-col">
-        <div className="flex-1">{children}</div>
-        <Footer />
+      <div className="grid h-full grid-cols-[minmax(0,_300px)_1fr]">
+        <Sidebar />
+        {children}
       </div>
     </AuthProvider>
   )
