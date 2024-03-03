@@ -10,8 +10,14 @@ import {
 } from '@/components/ui/table'
 import { formatCurrency, type ProductWithTotal } from '@/lib/utils'
 
+type ProductWithTotalPriceAndCategory = ProductWithTotal & {
+  category: {
+    name: string
+  }
+}
+
 interface ProductsTableProps {
-  products: ProductWithTotal[]
+  products: ProductWithTotalPriceAndCategory[]
 }
 
 export function ProductsTable({ products }: ProductsTableProps) {
@@ -31,7 +37,7 @@ export function ProductsTable({ products }: ProductsTableProps) {
           <TableRow key={product.id}>
             <TableCell>{product.name}</TableCell>
 
-            <TableCell>{product.categoryId}</TableCell>
+            <TableCell>{product.category.name}</TableCell>
 
             <TableCell>{formatCurrency(Number(product.basePrice))}</TableCell>
 

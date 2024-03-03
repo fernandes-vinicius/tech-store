@@ -10,11 +10,18 @@ import { ProductsTable } from './_components/products-table'
 export default async function ProductsPage() {
   const products = await db.product.findMany({
     include: {
-      category: true,
+      category: {
+        select: {
+          name: true,
+        },
+      },
     },
   })
 
-  const productsWithTotalPrice = products.map(computeProductTotalPrice)
+  const productsWithTotalPrice = products.map((product) => ({
+    ...computeProductTotalPrice(product),
+    category: product.category,
+  }))
 
   return (
     <main className="flex flex-col gap-10 p-10">
