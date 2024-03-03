@@ -119,14 +119,20 @@ export function Header() {
               </Button>
             </SheetClose>
 
-            <SheetClose asChild>
-              <Button asChild variant="outline" className="justify-start gap-2">
-                <Link href="/orders">
-                  <PackageSearchIcon className="size-4" />
-                  Meus Pedidos
-                </Link>
-              </Button>
-            </SheetClose>
+            {status === 'authenticated' && (
+              <SheetClose asChild>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="justify-start gap-2"
+                >
+                  <Link href="/orders">
+                    <PackageSearchIcon className="size-4" />
+                    Meus Pedidos
+                  </Link>
+                </Button>
+              </SheetClose>
+            )}
 
             <SheetClose asChild>
               <Button asChild variant="outline" className="justify-start gap-2">
