@@ -3,9 +3,18 @@ import { PackageIcon, PlusIcon } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { db } from '@/lib/prisma'
+import { computeProductTotalPrice } from '@/lib/utils'
+
+import { ProductsTable } from './_components/products-table'
 
 export default async function ProductsPage() {
-  const products = await db.product.findMany()
+  const products = await db.product.findMany({
+    include: {
+      category: true,
+    },
+  })
+
+  const productsWithTotalPrice = products.map(computeProductTotalPrice)
 
   return (
     <main className="flex flex-col gap-10 p-10">
@@ -24,6 +33,8 @@ export default async function ProductsPage() {
           Adicionar Produto
         </Button>
       </div>
+
+      <ProductsTable products={productsWithTotalPrice} />
     </main>
   )
 }
