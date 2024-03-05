@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 
+import { Suspense } from 'react'
+
 export const metadata: Metadata = {
   title: 'Compra concluída',
 }
@@ -7,5 +9,5 @@ export const metadata: Metadata = {
 type SuccessLayoutProps = Readonly<{ children: React.ReactNode }>
 
 export default function SuccessLayout({ children }: SuccessLayoutProps) {
-  return children
+  return <Suspense fallback={null}>{children}</Suspense>
 }
