@@ -10,7 +10,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="pt-BR">
       <body className={fontSans.variable}>
         {children}
-        <Toaster richColors />
+        <Toaster richColors closeButton />
       </body>
     </html>
   )
