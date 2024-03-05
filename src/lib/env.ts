@@ -13,6 +13,7 @@ export const env = createEnv({
     STRIPE_SECRET_KEY: z.string().min(1),
     STRIPE_WEBHOOK_SECRET_KEY: z.string().min(1),
     NEXTAUTH_SECRET: z.string().min(32),
+    NEXTAUTH_URL: z.string().url(),
   },
   /*
    * Environment variables available on the client (and server).
@@ -36,6 +37,7 @@ export const env = createEnv({
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
     STRIPE_WEBHOOK_SECRET_KEY: process.env.STRIPE_WEBHOOK_SECRET_KEY,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
 
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
